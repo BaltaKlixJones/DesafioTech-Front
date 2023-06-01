@@ -1,0 +1,41 @@
+.navbar {
+    background-color: #1050a4;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    height: 50px;
+  }
+  
+  .nav-menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  
+  .nav-item {
+    margin-right: 15px;
+    color: whitesmoke;
+  }
+  
+  .nav-link {
+    text-decoration: none;
+    color: #fff;
+    padding: 5px;
+    transition: color 0.3s;
+  }
+  
+  .nav-link:hover {
+    color: #ff6f00;
+  }
+  .nav-item h1 {
+    margin-left: 70px;
+    color: whitesmoke;
+  }
+  .btnlogout {
+    cursor: pointer;
+    margin-left: 70px;
+    color: whitesmoke;
+    background-color: rgba(0, 255, 255, 0);
+    border: none;
+  }
