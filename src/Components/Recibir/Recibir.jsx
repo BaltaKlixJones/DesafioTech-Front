@@ -95,7 +95,7 @@ const Recibir = () => {
         </h1>
       </div>
       <div className="button-container">
-        <button onClick={handleBluetoothRequest}>
+        <button onClick={handleBluetoothRequest}  disabled={connectedDevice}>
           Conectar dispositivo Bluetooth
         </button>
         <br />
@@ -114,7 +114,7 @@ const Recibir = () => {
         <div className="detalles">
           <br />
           <h1>Detalles recibidos:</h1>
-          <hr />
+          <hr style={{backgroundColor:"black", height:"3px", border:"none"}}/>
         </div>
         <div className="nivel-bateria">
           <h4>📱 Dispositivo : {connectedDevice.name} </h4>

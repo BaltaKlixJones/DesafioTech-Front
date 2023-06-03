@@ -3,22 +3,28 @@ import {BsBluetooth} from "react-icons/bs";
 import { useState } from "react";
 import Swal from "sweetalert2";
 import "./Enviar.css"
+import {BluetoothUUID} from "web-bluetooth";
 
 const Enviar = () => {
     const [connectedDevice, setConnectedDevice] = useState(null);
     const [fileToSend, setFileToSend] = useState(null);
     
-
-    const manufacturerData = [{
-      companyIdentifier: 0x00e0, /* Google */
-      dataPrefix: new Uint8Array([0x01, 0x02]),
-    }];
     
-  const UUID = "269d48c6-020e-11ee-be56-0242ac120002"
+  const UUID = "0000180a-0000-1000-8000-00805f9b34fb"
+  const characteristicUUID = "00002a24-0000-1000-8000-00805f9b34fb";
+  const serviceUUID = "00002a25-0000-1000-8000-00805f9b34fb"
+ 
+  const optionalServices2 = UUID
+  .split(/, ?/)
+  .map((s) => (s.startsWith("0x") ? parseInt(s) : s))
+  .filter((s) => s && BluetoothUUID);
+
+
 
   const handleBluetoothRequest = () => {
     navigator.bluetooth
     .requestDevice({ acceptAllDevices: true, optionalServices: [UUID]})
+    
       .then((device) => {
         setConnectedDevice(device);
         Swal.fire({
@@ -28,6 +34,7 @@ const Enviar = () => {
           showConfirmButton: false,
           timer: 1500,
         });
+        console.log("Dispositivo Bluetooth conectado:", device);
         return device.gatt.connect();
       })
       .catch((error) => {
@@ -39,6 +46,9 @@ const Enviar = () => {
         const selectedFile = event.target.files[0];
         setFileToSend(selectedFile);
       };
+
+
+
     
       const handleSendFile = () => {
         if (connectedDevice && fileToSend) {
@@ -48,7 +58,7 @@ const Enviar = () => {
             connectedDevice.gatt
               .connect()
               .then((server) => server.getPrimaryService(UUID))
-              .then((service) => service.getCharacteristic(UUID))
+              .then((service) => service.getCharacteristic(characteristicUUID))
               .then((characteristic) => characteristic.writeValue(fileData))
               .then(() => {
                 console.log("Archivo enviado con éxito");
@@ -88,14 +98,16 @@ const Enviar = () => {
           });
         }
       };
-  
+    
+
     return (
       <div className="container-enviar">
         <div>
+         
          <h1>Envía archivos por <BsBluetooth style={{color:"blue", marginBottom:"-5px"}}/> Bluetooth</h1> 
         </div>
         <div className="button-container">
-          <button onClick={handleBluetoothRequest}>
+          <button onClick={handleBluetoothRequest} disabled={connectedDevice}>
             Conectar dispositivo Bluetooth
           </button>
           <br />

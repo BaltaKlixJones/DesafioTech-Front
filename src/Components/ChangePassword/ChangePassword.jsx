@@ -47,7 +47,7 @@ const ChangePassword = () => {
             showConfirmButton: false,
             timer: 1500,
             }).then(() => {
-                window.location.href = '/perfil';
+                window.location.href = '/Home';
             }
         );
         

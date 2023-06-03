@@ -1,8 +1,8 @@
 
-.form {
+.form{
     margin: 0 auto;
     margin-top: 10rem;
-    background-color: #fff;
+    background-color: #c4c5c690;
     display: block;
     padding: 1rem;
     max-width: 350px;
@@ -29,7 +29,7 @@
   }
   
   .input-container input {
-    background-color: #fff;
+    background-color: #ffffff90;
     padding: 1rem;
     padding-right: 3rem;
     font-size: 0.875rem;

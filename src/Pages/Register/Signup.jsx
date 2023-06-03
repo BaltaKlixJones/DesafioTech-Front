@@ -64,8 +64,8 @@ const Signup = () => {
   return (
     <div>
       <form className ="form" onSubmit={handleSubmit}>
-        <p className="title">Register </p>
-        <p className="message">Signup now and get full access to our app. </p>
+        <p className="title">Registrarse </p>
+        <p className="message">Ingresa tus datos </p>
         <label>
           <input required placeholder="" name="email" id="email" type="email" className="input" />
           <span>Email</span>
@@ -80,7 +80,7 @@ const Signup = () => {
             type="password"
             className="input"
           />
-          <span>Password</span>
+          <span>Contraseña</span>
         </label>
         <label>
           <input
@@ -91,11 +91,11 @@ const Signup = () => {
             id="repeat-password"
             className="input"
           />
-          <span>Confirm password</span>
+          <span>Confirmar contraseña</span>
         </label>
-        <button type="submit" className="submit">Submit</button>
+        <button type="submit" className="submit">Registrarse</button>
         <p className="signin">
-          Already have an acount ?<Link to="/signIn">{" "}Signin</Link>
+          Ya tienes cuenta?<Link to="/signIn">{" "}Iniciar sesión</Link>
         </p>
       </form>
     </div>

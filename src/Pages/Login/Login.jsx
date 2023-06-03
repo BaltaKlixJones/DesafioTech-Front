@@ -89,14 +89,14 @@ const Login = () => {
   return (
     <div className="container-form">
       <form className="form" onSubmit={handleSubmit}>
-        <p className="form-title">Sign in to your account</p>
+        <p className="form-title">Inicia Sesión</p>
         <div className="input-container">
           <input
             required
             id="email"
             type="email"
             name="email"
-            placeholder="Enter email"
+            placeholder="Email"
           />
           <span></span>
         </div>
@@ -106,15 +106,15 @@ const Login = () => {
             type="password"
             name="password"
             id="password"
-            placeholder="Enter password"
+            placeholder="Contraseña"
           />
         </div>
         <button className="submit">
-          Sign in
+          Iniciar sesion 
         </button>
 
         <p className="signup-link">
-          No account ?<Link to="/signUp"> Sign up</Link>
+          No tienes cuenta ?<Link to="/signUp"> Registrarse</Link>
         </p>
       </form>
     </div>

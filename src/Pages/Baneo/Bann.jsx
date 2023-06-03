@@ -5,10 +5,12 @@ const Bann = () => {
   return (
     <div className="bann-container">
     <div>
-      <h3>
-        Lo siento! Tu cuenta ha sido deshabilitada por un administrador. Por
+      <h1>
+        Oh no! Tu cuenta ha sido deshabilitada por un administrador. 
+        <br />
+        Por
         favor ponte en contacto con nosotros: example@example.com
-      </h3>
+      </h1>
     </div>
   </div>
 );

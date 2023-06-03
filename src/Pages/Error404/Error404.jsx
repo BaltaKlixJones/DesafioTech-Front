@@ -5,10 +5,10 @@ const Error404 = () => {
   return (
     <div className="error404-container">
       <h1>¡Error 404!</h1>
-      <p>La página que estás buscando no existe.</p>
-      <p>Por favor, verifica la URL o regresa a la página de inicio.</p>
+      <h2>La página que estás buscando no existe.</h2>
+      <h3>Por favor, verifica la URL o regresa a la página de inicio.</h3>
       <Link to= "/Home">
-    Volver a la página de inicio
+    <h4>Volver a la página de inicio</h4>
       </Link>
     </div>
   );
