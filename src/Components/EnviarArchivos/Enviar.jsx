@@ -7,20 +7,29 @@ import "./Enviar.css"
 const Enviar = () => {
     const [connectedDevice, setConnectedDevice] = useState(null);
     const [fileToSend, setFileToSend] = useState(null);
-    const UUID = "427ac5ac-008b-11ee-be56-0242ac120002";
+    
+
+    function generateBluetoothUUID() {
+      const baseUUID = "00000000-0000-1000-8000-00805F9B34FB";
+      const randomPart = Math.floor(Math.random() * 0xFFFFFFFFFFFF).toString(16).toUpperCase();
+      const uuid = baseUUID.replace(/0{12}$/, randomPart);
+      return uuid;
+    }
+  const UUID = "63291670-016f-11ee-be56-0242ac120002"
+
+  const handleBluetoothRequest = () => {
+    const optionalServices = UUID;
   
-    const handleBluetoothRequest = () => {
-        navigator.bluetooth
-          .requestDevice({ acceptAllDevices: true, optionalServices: [UUID] })
-          .then((device) => {
-            setConnectedDevice(device);
-            console.log("Dispositivo conectado:", device);
-          })
-          .catch((error) => {
-            console.error("Error al solicitar dispositivo Bluetooth:", error);
-            
-          });
-      };
+    navigator.bluetooth
+    .requestDevice({ acceptAllDevices: true, optionalServices: [UUID] })
+      .then((device) => {
+        setConnectedDevice(device);
+        console.log("Dispositivo conectado:", device);
+      })
+      .catch((error) => {
+        console.error("Error al solicitar dispositivo Bluetooth:", error);
+      });
+  };
     
       const handleFileInputChange = (event) => {
         const selectedFile = event.target.files[0];
@@ -44,7 +53,7 @@ const Enviar = () => {
                 Swal.fire({
                     position: "center",
                     icon: "error",
-                    title: "Tu dispositivo no es compatible",
+                    title: `Unsuppoorted device`,
                     showConfirmButton: false,
                     timer: 1500,
                 })

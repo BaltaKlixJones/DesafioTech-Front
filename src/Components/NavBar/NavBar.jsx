@@ -10,7 +10,7 @@ const NavBar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const currentuser = JSON.parse(sessionStorage.getItem("currentuser"));
-  console.log(currentuser);
+
 
   const handleLogout = async () => {
     dispatch(logoutUser());
