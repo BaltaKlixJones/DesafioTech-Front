@@ -108,7 +108,7 @@ const Admin = () => {
 
   return (
     <div>
-      <h1>Admin</h1>
+      <h1 className="tituloadmin">Usuarios registrados</h1>
       <table className="users-table">
         <thead>
           <tr>
@@ -123,33 +123,41 @@ const Admin = () => {
             <tr key={user.id}>
               <td>
                 {user.email === "balta98_@hotmail.com" &&
-                  user.role === "admin" && (
-                    <span className="admin-role">admin</span>
-                  )}
-                {user.email !== "balta98_@hotmail.com" && user.role}
+                user.role === "user" ? (
+                  <span className="admin-role">admin</span>
+                ) : (
+                  user.role
+                )}
               </td>
               <td>{user.email}</td>
               <td>
                 {user.status}
-                <button
-                  onClick={() => handleDeleteUser(user?.id)}
-                  style={{ border: "none" }}
-                >
-                  <AiOutlineDelete style={{ color: "red" }} />
-                </button>{" "}
-                <button style={{ border: "none" }}>
-                  {user.status === "active" ? (
-                    <MdDisabledVisible
-                      onClick={() => handleChangeStatus(user?.id)}
-                      style={{ color: "#100f0f", cursor: "pointer" }}
-                    />
-                  ) : (
-                    <SiStatuspage
-                      onClick={() => handleChangeStatusActive(user?.id)}
-                      style={{ color: "#191919", cursor: "pointer" }}
-                    />
-                  )}
-                </button>{" "}
+                {user.email !== "balta98_@hotmail.com" && (
+                  <>
+                    <button
+                      onClick={() => handleDeleteUser(user?.id)}
+                      style={{ border: "none" }}
+                       className="btnadmin"
+                    >
+                      <AiOutlineDelete  size={25} style={{border:"none", marginBottom:"-5px",backgroundColor:"transparent", color: "red",cursor:"pointer" }} />
+                    </button>{" "}
+                    <button style={{ border: "none" }}>
+                      {user.status === "active" ? (
+                        <MdDisabledVisible 
+                        className="btnadmin"
+                          onClick={() => handleChangeStatus(user?.id)}
+                          size={25} style={{border:"none", marginBottom:"-5px",backgroundColor:"transparent", color: "#3c3a3a", cursor: "pointer" }}
+                        />
+                      ) : (
+                        <SiStatuspage 
+                        className="btnadmin"
+                          onClick={() => handleChangeStatusActive(user?.id)}
+                          size={25} style={{border:"none", marginBottom:"-5px", backgroundColor:"transparent", color: "#100f0f", cursor: "pointer" }}
+                        />
+                      )}
+                    </button>{" "}
+                  </>
+                )}
               </td>
             </tr>
           ))}

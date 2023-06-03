@@ -65,7 +65,7 @@ const ChangePassword = () => {
 
   return (
     <div className="container">
-      <h1>Cambio de Contraseña</h1>
+      <h1>Cambiar contraseña</h1>
       <form className="password-form" onSubmit={handleSubmit}>
         <div className="form-group">
             
@@ -73,21 +73,24 @@ const ChangePassword = () => {
          
         </div>
         <div className="form-group">
-          <label htmlFor="newPassword">Nueva Contraseña</label>
+          <label htmlFor="newPassword">Nueva Contraseña: {" "}</label>
           <input
             type="password"
             id="newPassword"
+            className='nva-contraseña'
             value={password}
             onChange={handlePasswordChange}
             required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="confirmPassword">Confirmar Contraseña</label>
+          <label htmlFor="confirmPassword">Confirmar Contraseña: {" "}</label>
+          <br />
           <input
             type="password"
             id="confirmPassword"
             value={confirmPassword}
+            className='nva-contraseña'
             onChange={handleConfirmPasswordChange}
             required
           />

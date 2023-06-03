@@ -87,7 +87,7 @@ const Login = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container-form">
       <form className="form" onSubmit={handleSubmit}>
         <p className="form-title">Sign in to your account</p>
         <div className="input-container">

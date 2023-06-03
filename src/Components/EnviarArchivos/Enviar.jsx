@@ -9,15 +9,25 @@ const Enviar = () => {
     const [fileToSend, setFileToSend] = useState(null);
     
 
-   
-  const UUID = "d3862cfa-020a-11ee-be56-0242ac120002"
+    const manufacturerData = [{
+      companyIdentifier: 0x00e0, /* Google */
+      dataPrefix: new Uint8Array([0x01, 0x02]),
+    }];
+    
+  const UUID = "269d48c6-020e-11ee-be56-0242ac120002"
 
   const handleBluetoothRequest = () => {
     navigator.bluetooth
-    .requestDevice({ acceptAllDevices: true, optionalServices: [UUID] })
+    .requestDevice({ acceptAllDevices: true, optionalServices: [UUID]})
       .then((device) => {
         setConnectedDevice(device);
-        console.log("Dispositivo conectado:", device);
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Dispositivo conectado",
+          showConfirmButton: false,
+          timer: 1500,
+        });
         return device.gatt.connect();
       })
       .catch((error) => {

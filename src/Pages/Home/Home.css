@@ -1,14 +1,15 @@
 .home-container {
   text-align: center;
   padding: 50px;
-  background-color: #f7f7f7;
-  height: 80vh;
+  /* background-color: #f7f7f7; */
+  margin-top: 100px;
+height: 80vh;
 }
 .icono-bt {
   animation: spin 3s infinite linear;
   transform-origin: center center;
-  box-shadow: 0 0 10px #333;
-  border-radius: 20%;
+  /* box-shadow: 0 0 10px #333;
+  border-radius: 20%; */
 }
 
 @keyframes spin {
@@ -19,13 +20,15 @@
 
 .home-container h1 {
   font-size: 36px;
-  color: #333;
+  /* color: #333; */
+  color: #eae9e9;
   margin-bottom: 20px;
 }
 
 .home-container p {
   font-size: 18px;
-  color: #666;
+  /* color: #666; */
+  color:#d8d8d8;
   margin-bottom: 30px;
 }
 

@@ -11,6 +11,7 @@ import Admin from './Components/Admin/Admin';
 import ChangePassword from './Components/ChangePassword/ChangePassword';
 import Bann from './Pages/Baneo/Bann';
 import axios from "axios";
+import Error404 from './Pages/Error404/Error404';
 
 
 axios.defaults.baseURL = "http://localhost:3001/";
@@ -30,6 +31,7 @@ function App() {
       <Route path="/admin" element={<Admin/>} />
       <Route path="/perfil" element={<ChangePassword/>} />
       <Route path="/deshabilitado" element={<Bann/>} />
+      <Route path="/*" element={<Error404/>} />
    </Routes>
     </>
   )

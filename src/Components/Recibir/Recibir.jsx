@@ -9,42 +9,6 @@ const Recibir = () => {
   const [batteryLevel, setBatteryLevel] = useState(null);
   const [showBatteryLevel, setShowBatteryLevel] = useState(false);
 
-
-  const UUID = "427ac5ac-008b-11ee-be56-0242ac120002";
-
-  // const handleBluetoothRequest = () => {
-  //   navigator.bluetooth
-  //     .requestDevice({ acceptAllDevices: true, optionalServices: [UUID] })
-  //     .then((device) => {
-  //       setConnectedDevice(device);
-  //       console.log("Dispositivo conectado:", device);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error al solicitar dispositivo Bluetooth:", error);
-        
-  //     });
-  // };
-  // const handleBluetoothRequest = () => {
-  //   navigator.bluetooth
-  //     .requestDevice({ acceptAllDevices: true, optionalServices: [UUID] })
-  //     .then((device) => {
-  //       setConnectedDevice(device);
-  //       console.log("Dispositivo conectado:", device);
-  //       return device.gatt.connect();
-  //     })
-  //     .then((server) => server.getPrimaryService(UUID))
-  //     .then((service) => service.getCharacteristic("battery_service"))
-  //     .then((characteristic) => characteristic.readValue())
-  //     .then((value) => {
-  //       const batteryLevel = value.getUint8(0);
-  //       setBatteryLevel(batteryLevel);
-  //       console.log("Nivel de batería:", batteryLevel);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error al solicitar dispositivo Bluetooth:", error);
-  //     });
-  // };
-
   const handleBluetoothRequest = () => {
     navigator.bluetooth
       .requestDevice({ acceptAllDevices: true, optionalServices: ['battery_service'] })
@@ -148,12 +112,14 @@ const Recibir = () => {
       {receivedFile && connectedDevice && showBatteryLevel && batteryLevel !== null && (
       <div className="detalles-container">
         <div className="detalles">
-          <h4>Dispositivo conectado: {connectedDevice.name}</h4>
           <br />
-          <h4>Detalle recibido: {receivedFile.name}</h4>
+          <h1>Detalles recibidos:</h1>
+          <hr />
         </div>
         <div className="nivel-bateria">
-          Nivel de batería <span className="bateria-icon">🔋</span>: {batteryLevel}%
+          <h4>📱 Dispositivo : {connectedDevice.name} </h4>
+          {console.log(connectedDevice)}
+           <h4><span className="bateria-icon">🔋</span>Nivel de batería: {batteryLevel}% </h4>
         </div>
       </div>
     )}

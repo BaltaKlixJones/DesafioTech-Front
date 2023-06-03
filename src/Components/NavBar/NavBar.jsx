@@ -11,11 +11,11 @@ const NavBar = () => {
   const navigate = useNavigate();
   const currentuser = JSON.parse(sessionStorage.getItem("currentuser"));
 
-  useEffect(() => {
-    if (!currentuser || !currentuser.email ) {
-      navigate("/signIn");
-    }
-  }, [navigate])
+  // useEffect(() => {
+  //   if (!currentuser || !currentuser.email ) {
+  //     navigate("/signIn");
+  //   }
+  // }, [navigate])
 
 
   const handleLogout = async () => {
@@ -49,20 +49,20 @@ const NavBar = () => {
     location.pathname === `/perfil` ? (
     <nav className="navbar">
       <ul className="nav-menu">
-      {currentuser &&
-            currentuser.email &&
-            currentuser.email === "balta98_@hotmail.com" && (
-              <li className="nav-item">
-                <Link to="/admin" style={{ textDecoration: "none" }}>
-                  <h1>ADMIN</h1>
-                </Link>
-              </li>
-            )}
         <li className="nav-item">
           <Link to="/Home" style={{ textDecoration: "none" }}>
             <h1>Inicio</h1>
           </Link>
         </li>
+      {currentuser &&
+            currentuser.email &&
+            currentuser.email === "balta98_@hotmail.com" && (
+              <li className="nav-item">
+                <Link to="/admin" style={{ textDecoration: "none" }}>
+                  <h1>Panel de Admin</h1>
+                </Link>
+              </li>
+            )}
         <li className="nav-item">
           <Link to="/send" style={{ textDecoration: "none" }}>
             <h1>Enviar </h1>
