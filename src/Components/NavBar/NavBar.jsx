@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "./NavBar.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -10,6 +10,12 @@ const NavBar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const currentuser = JSON.parse(sessionStorage.getItem("currentuser"));
+
+  useEffect(() => {
+    if (!currentuser || !currentuser.email ) {
+      navigate("/signIn");
+    }
+  }, [navigate])
 
 
   const handleLogout = async () => {
@@ -43,13 +49,15 @@ const NavBar = () => {
     location.pathname === `/perfil` ? (
     <nav className="navbar">
       <ul className="nav-menu">
-        {currentuser.email === "balta98_@hotmail.com" && (
-          <li className="nav-item">
-            <Link to="/admin" style={{ textDecoration: "none" }}>
-              <h1>ADMIN</h1>
-            </Link>
-          </li>
-        )}
+      {currentuser &&
+            currentuser.email &&
+            currentuser.email === "balta98_@hotmail.com" && (
+              <li className="nav-item">
+                <Link to="/admin" style={{ textDecoration: "none" }}>
+                  <h1>ADMIN</h1>
+                </Link>
+              </li>
+            )}
         <li className="nav-item">
           <Link to="/Home" style={{ textDecoration: "none" }}>
             <h1>Inicio</h1>
@@ -57,12 +65,12 @@ const NavBar = () => {
         </li>
         <li className="nav-item">
           <Link to="/send" style={{ textDecoration: "none" }}>
-            <h1>Enviar Archivos</h1>
+            <h1>Enviar </h1>
           </Link>
         </li>
         <li className="nav-item">
           <Link to="/recibir" style={{ textDecoration: "none" }}>
-            <h1>Recibir Archivos</h1>
+            <h1>Recibir </h1>
           </Link>
         </li>
         <li className="nav-item">

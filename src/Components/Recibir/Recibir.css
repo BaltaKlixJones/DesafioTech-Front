@@ -6,6 +6,35 @@
     margin-top: 10px;
     text-align: center;
   }
+  .detalles-container {
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 16px;
+    height: 100px;
+  }
+  
+  .detalles {
+    margin-bottom: 8px;
+  }
+  
+  .detalles h4 {
+    margin: 0;
+  }
+  
+  .nivel-bateria {
+    font-size: 18px;
+    margin-top: 8px;
+  }
+  
+ 
+  
+  .bateria-icon {
+    vertical-align: middle;
+    margin-left: 4px;
+  }
+  
+ 
   
   .title {
     font-size: 24px;

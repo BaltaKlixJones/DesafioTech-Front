@@ -9,22 +9,16 @@ const Enviar = () => {
     const [fileToSend, setFileToSend] = useState(null);
     
 
-    function generateBluetoothUUID() {
-      const baseUUID = "00000000-0000-1000-8000-00805F9B34FB";
-      const randomPart = Math.floor(Math.random() * 0xFFFFFFFFFFFF).toString(16).toUpperCase();
-      const uuid = baseUUID.replace(/0{12}$/, randomPart);
-      return uuid;
-    }
-  const UUID = "63291670-016f-11ee-be56-0242ac120002"
+   
+  const UUID = "d3862cfa-020a-11ee-be56-0242ac120002"
 
   const handleBluetoothRequest = () => {
-    const optionalServices = UUID;
-  
     navigator.bluetooth
     .requestDevice({ acceptAllDevices: true, optionalServices: [UUID] })
       .then((device) => {
         setConnectedDevice(device);
         console.log("Dispositivo conectado:", device);
+        return device.gatt.connect();
       })
       .catch((error) => {
         console.error("Error al solicitar dispositivo Bluetooth:", error);
@@ -48,19 +42,26 @@ const Enviar = () => {
               .then((characteristic) => characteristic.writeValue(fileData))
               .then(() => {
                 console.log("Archivo enviado con éxito");
+                Swal.fire({
+                  position: "center",
+                  icon: "success",
+                  title: "Archivo enviado con éxito",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
               })
               .catch((error) => {
-                Swal.fire({
-                    position: "center",
-                    icon: "error",
-                    title: `Unsuppoorted device`,
-                    showConfirmButton: false,
-                    timer: 1500,
-                })
                 console.error("Error al enviar el archivo:", error);
+                Swal.fire({
+                  position: "center",
+                  icon: "error",
+                  title: "Error al enviar el archivo",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
               });
           };
-          reader.readAsArrayBuffer(fileToSend);
+          reader.readAsArrayBuffer(fileToSend.slice(0, fileToSend.size));
         }
       };
 

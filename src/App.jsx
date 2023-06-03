@@ -9,6 +9,7 @@ import Enviar from './Components/EnviarArchivos/Enviar';
 import Recibir from './Components/Recibir/Recibir';
 import Admin from './Components/Admin/Admin';
 import ChangePassword from './Components/ChangePassword/ChangePassword';
+import Bann from './Pages/Baneo/Bann';
 import axios from "axios";
 
 
@@ -28,6 +29,7 @@ function App() {
       <Route path="/recibir" element={<Recibir/>} />
       <Route path="/admin" element={<Admin/>} />
       <Route path="/perfil" element={<ChangePassword/>} />
+      <Route path="/deshabilitado" element={<Bann/>} />
    </Routes>
     </>
   )
